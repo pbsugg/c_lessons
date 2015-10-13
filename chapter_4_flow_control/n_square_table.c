@@ -14,9 +14,7 @@ int main(void)
     printf("------------\n");
     printf("%i     %i\n\n", n, sq_n);
   }
-
-
+  
   return 0;
-
 
 }
