@@ -14,7 +14,7 @@ int main(void)
       acc *= x;
       x -= 1;
     }
-    printf("The factorial of %i is %i\n", n, acc);
+    printf("The factorial of %-7i is %i\n", n, acc);
   }
 
   return 0;
