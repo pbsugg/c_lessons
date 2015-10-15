@@ -1,27 +1,35 @@
+// modification of 6.3 to accept any number of responses
+// create an array of variable length, begin entering response
+//once you receive the "999" response, display the results
+
 #include <stdio.h>
+
 
 int main(void)
 {
 
-  int i, response, numResponses;
+  int i, response, ratingCounters[11];
+
+
 
   for (i = 1; i <= 10; ++i)
   ratingCounters[i] = 0;
 
-  printf ("How many responses to enter?\n");
-  scanf("%i", &numResponses);
 
+  // Start getting the responses
   printf("Enter your responses\n");
-
-  for (i = 1; i <= numResponses; ++i){
+  do {
     scanf("%i", &response);
-
-    if (response < 1 || response > 10)
-      printf("Bad response: %i\n", response);
+    if (response < 1 || response > 10 ){
+      if (response != 999)
+        printf("Bad response: %i\n", response);
+    }
     else
       ++ratingCounters[response];
+  } while (response != 999);
 
-  }
+  // for (i = 1; i <= numResponses; ++i){
+
 
   printf("\n\nRating  Number of Responses\n");
   printf("------ ----------------------\n");
