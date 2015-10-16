@@ -34,7 +34,7 @@ float squareRoot (float x)
 
 int main (void)
 {
-  printf("%f\n", squareRoot(0.0034));
+  printf("%f\n", squareRoot(-40));
   return 0;
 }
 
