@@ -5,6 +5,8 @@
 // n equals number of elements in the array
 //order = "0" = "asc" 1 = "desc"
 
+
+
 void sort( int a[], int n, int ordering)
 {
 
@@ -33,11 +35,15 @@ void sort( int a[], int n, int ordering)
     }
   }
 }
+
+
 int main(void){
 
   int i;
   int array[16] = { 34,-5, 6, 0, 12, 100, 56, 22, 44, -3, -9, 12, 17, 22, 6, 11};
-  void sort (int a[], int n, int ordering);
+
+  // Only need this if main comes *first*
+  // void sort (int a[], int n, int ordering);
 
   printf("The array before the sort:\n");
 
