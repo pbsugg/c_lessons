@@ -62,7 +62,6 @@ int yearCalc(int year,int month)
   }
   else
     return year;
-
 }
 
 int monthCalc(int month)
@@ -75,7 +74,6 @@ int monthCalc(int month)
 
 int dayCalcFormula(struct date dateInput)
 {
-
   int n;
   n = ((1461 * yearCalc(dateInput.year, dateInput.month)) / 4) + ((153 * monthCalc(dateInput.month)/ 4)) + dateInput.day;
   return n;
@@ -83,6 +81,5 @@ int dayCalcFormula(struct date dateInput)
 
 int daysBetween(struct date dateOne, struct date dateTwo)
 {
-
   return dayCalcFormula(dateTwo) - dayCalcFormula(dateOne);
 }
