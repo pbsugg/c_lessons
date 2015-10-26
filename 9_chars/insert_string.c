@@ -13,7 +13,7 @@ int main(void)
 
   return 0;
 
-}
+  }
 
 int stringLength(const char string[])
 {
