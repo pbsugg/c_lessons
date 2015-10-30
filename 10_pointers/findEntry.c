@@ -1,4 +1,5 @@
 // return a pointer from a function
+// finding entry in a linked list
 
 #include <stdio.h>
 
@@ -7,7 +8,7 @@ struct entry
   int value;
   struct entry  *next;
 
-}; 
+};
 
 struct entry  *findEntry (struct entry  *listPtr, int match)
 {
