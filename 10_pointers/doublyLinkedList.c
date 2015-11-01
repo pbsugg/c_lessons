@@ -48,6 +48,15 @@ int main(void)
     listStart = listStart->next;
   }
 
+  printf("printing end to beginning\n");
+  struct node  *listEnd;
+  listEnd = &n4;
+  while (listEnd != (struct node *) 0 )
+  {
+    printf("%i\n", listEnd->value);
+    listEnd = listEnd->prev;
+  }
+
 }
 
 struct node  *addNode(struct node  *listPtr, struct node  *entryToAdd, char direction[])
