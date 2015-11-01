@@ -29,18 +29,42 @@ int main(void)
 
   n1.next = &n2;
   n2.next = &n3;
+  n3.next = 0;
 
   // set entry to insert
 
-  entryToInsert.value = 100;
-  struct entry  *entryPtr = &entryToInsert;
-  struct entry  *elementInsertAfter = &n3;
+  // entryToInsert.value = 100;
+  // struct entry  *entryPtr = &entryToInsert;
+  // struct entry  *elementInsertAfter = &n3;
+  //
+  //
+  // struct entry  *listPtr;   // store result
+  // listPtr = insertEntry(entryPtr, elementInsertAfter);
+
+// insert new element at front of the list
+// create new entry
+  struct entry  n4;
+  n4.value = 500;
+  struct entry  *n4Pointer;
+  n4Pointer = &n4;
+
+  struct entry *n1Pointer;
+  n1Pointer = &n1;
+
+  struct entry  *listPtr2;
+  // insert to front of list
+  listPtr2 = insertEntry(n1Pointer, n4Pointer);
+  
+  listPtr2 = &n4;
+  // print out all values in list
+  while (listPtr2 != (struct entry *) 0 )
+  {
+    printf("Entry %i.\n", listPtr2->value);
+    listPtr2 = listPtr2->next;
+  }
 
 
-  struct entry  *listPtr;   // store result
-  listPtr = insertEntry(entryPtr, elementInsertAfter);
-
-  printf("Entry %i.\n", listPtr->value);
+  // printf("Entry %i.\n", listPtr->value);
 
 }
 
