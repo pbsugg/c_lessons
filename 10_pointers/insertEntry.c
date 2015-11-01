@@ -54,7 +54,7 @@ int main(void)
   struct entry  *listPtr2;
   // insert to front of list
   listPtr2 = insertEntry(n1Pointer, n4Pointer);
-
+  
   listPtr2 = &n4;
   // print out all values in list
   while (listPtr2 != (struct entry *) 0 )

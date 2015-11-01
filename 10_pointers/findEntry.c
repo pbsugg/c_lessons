@@ -14,7 +14,7 @@ struct entry  *findEntry (struct entry  *listPtr, int match)
 {
   // 0 means the end of the chain
   // The '(struct entry *) 0' is  typecast operator to indicate reached 0
-  while (listPtr!= (struct entry *) 0 )
+  while (listPtr != (struct entry *) 0 )
     if (listPtr->value == match)
       return (listPtr);
     else
