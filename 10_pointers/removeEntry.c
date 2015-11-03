@@ -65,6 +65,7 @@ struct entry  *removeEntry(struct entry  *currentNode)
   // struct entry  *getNext(struct entry  *currentNode);
   struct entry  *prevNode;
 
+  
 
   while (currentNode->next != 0 )
   {
