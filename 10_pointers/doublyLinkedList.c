@@ -19,7 +19,8 @@ int main(void)
 {
 
   struct node  n1, n2, n3, n4;
-
+  struct node  *addNode(struct node  *currentNode, struct node  *entryToAdd, int index);
+  struct node  *removeNode(struct node *entryToRemove);
 
   n1.value = 1;
   n2.value = 2;
@@ -38,37 +39,100 @@ int main(void)
   n4.prev = &n3;
   n4.next = 0;
 
-  printf("printing beginning to end\n");
-  struct node  *listStart;
-  listStart = &n1;
 
-  while (listStart != (struct node *) 0 )
-  {
-    printf("%i\n", listStart->value);
-    listStart = listStart->next;
-  }
 
-  printf("printing end to beginning\n");
-  struct node  *listEnd;
-  listEnd = &n4;
-  while (listEnd != (struct node *) 0 )
-  {
-    printf("%i\n", listEnd->value);
-    listEnd = listEnd->prev;
-  }
+
+  // printf("printing end to beginning\n");
+  // struct node  *listEnd;
+  // listEnd = &n4;
+  // while (listEnd != (struct node *) 0 )
+  // {
+  //   printf("%i\n", listEnd->value);
+  //   listEnd = listEnd->prev;
+  // }
+
+
+// add starting node
+struct node  *listStart;
+listStart = &n1;
+
+struct node  entry = {50, 0, 0};
+struct node  *entryToAdd = &entry;
+
+addNode(listStart, entryToAdd, 3);
+
+
+printf("printing beginning to end\n");
+
+while (listStart != (struct node *) 0 )
+{
+  printf("%i\n", listStart->value);
+  listStart = listStart->next;
+}
+
+struct node  *nodeToRemovePointer = &entry;
+
+removeNode(nodeToRemovePointer);
+
+printf("printing list with removed entry\n");
+
+listStart = &n1;
+while (listStart != (struct node *) 0 )
+{
+  printf("%i\n", listStart->value);
+  listStart = listStart->next;
+}
+
 
 }
 
-struct node  *addNode(struct node  *listPtr, struct node  *entryToAdd, char direction[])
+// add entry at certain point in node, after *index*
+// link up before and after indexes properly
+// "currentNode" is the node where you start traversing the list
+struct node  *addNode(struct node  *currentNode, struct node  *entryToAdd, int index)
 {
+  int counter = 0;
+  struct node  *nextNode = currentNode->next;
+  while (counter != index)
+  {
+    currentNode = currentNode->next;
+    ++counter;
+  }
 
-  return listPtr;
+  // protect against end of node situation with if statement
+  if (currentNode->next != (struct node *) 0)
+  {
+    nextNode = currentNode->next;
+    nextNode->prev = entryToAdd;
+    entryToAdd->next = nextNode;
+  }
+
+  currentNode->next = entryToAdd;
+  entryToAdd->prev = currentNode;
+
+  return entryToAdd;
 }
 
-
-struct node  *removeNode(struct node *listPtr)
+// remove entry specified in argument
+// get the "prev" and "next" pointers from entry to find nodes on either side
+//  remove "next" pointer from before
+// remove "prev" pointer from after
+// link to two pointers from before and after up with one another
+struct node  *removeNode(struct node *entryToRemove)
 {
 
-  return listPtr;
+  struct node  *entryBefore, *entryAfter;
+
+  if (entryToRemove->prev != (struct node *)0)
+  {
+    entryBefore = entryToRemove->prev;
+    entryBefore->next = entryAfter;
+  }
+  if (entryToRemove->next != (struct node *)0)
+  {
+    entryAfter = entryToRemove->next;
+    entryAfter->prev = entryBefore;
+  }
+  return entryBefore;
 
 }
