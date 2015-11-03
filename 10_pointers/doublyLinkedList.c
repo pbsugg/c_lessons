@@ -20,6 +20,7 @@ int main(void)
 
   struct node  n1, n2, n3, n4;
   struct node  *addNode(struct node  *currentNode, struct node  *entryToAdd, int index);
+  struct node  *removeNode(struct node *entryToRemove);
 
   n1.value = 1;
   n2.value = 2;
@@ -69,6 +70,20 @@ while (listStart != (struct node *) 0 )
   listStart = listStart->next;
 }
 
+struct node  *nodeToRemovePointer = &entry;
+
+removeNode(nodeToRemovePointer);
+
+printf("printing list with removed entry\n");
+
+listStart = &n1;
+while (listStart != (struct node *) 0 )
+{
+  printf("%i\n", listStart->value);
+  listStart = listStart->next;
+}
+
+
 }
 
 // add entry at certain point in node, after *index*
@@ -99,13 +114,25 @@ struct node  *addNode(struct node  *currentNode, struct node  *entryToAdd, int i
 }
 
 // remove entry specified in argument
-// begin, traverse the list until you get to its entry
+// get the "prev" and "next" pointers from entry to find nodes on either side
 //  remove "next" pointer from before
 // remove "prev" pointer from after
 // link to two pointers from before and after up with one another
-struct node  *removeNode(struct node  *listStart, struct node *entryToRemove)
+struct node  *removeNode(struct node *entryToRemove)
 {
 
-  return listStart;
+  struct node  *entryBefore, *entryAfter;
+
+  if (entryToRemove->prev != (struct node *)0)
+  {
+    entryBefore = entryToRemove->prev;
+    entryBefore->next = entryAfter;
+  }
+  if (entryToRemove->next != (struct node *)0)
+  {
+    entryAfter = entryToRemove->next;
+    entryAfter->prev = entryBefore;
+  }
+  return entryBefore;
 
 }
