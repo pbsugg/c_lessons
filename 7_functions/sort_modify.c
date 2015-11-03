@@ -24,7 +24,7 @@ void sort( int a[], int n, int ordering)
       }
     }
 
-  else if (ordering == 1){
+  else if (ordering ==   1){
     for (i = n - 1; i >= 0; --i)
       for (j = i -1; j >= 0; --j){
         if (a[i] > a[j]){
