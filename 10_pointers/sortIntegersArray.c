@@ -12,22 +12,24 @@
 // n is the length of the array
 int sortArray(int array[], const int n)
 {
-  int *ptr = array;
-  int *ptr2 = array + 1;
-  int *holder;
+  int *ptr, *ptr2;
+
+  int holder;
   int * const length = array + n;
 
-  for(ptr = array; ptr <= length; ++ptr)
-    for (ptr2 = array + 1; ptr2 <= length; ++ptr2)
+  for(ptr = array; ptr <= length - 1 ; ++ptr)
+  {
+    for (ptr2 = ptr + 1; ptr2 < length; ++ptr2)
     {
       if (*ptr > *ptr2)
       {
-        *holder = *ptr;
+        holder = *ptr;
         *ptr = *ptr2;
-        *ptr2 = *holder;
+        *ptr2 = holder;
       }
 
     }
+  }
 
     return 0;
 
@@ -48,7 +50,7 @@ int main(void){
   for(i = 0; i < 16; ++i)
     printf("%i ", array[i]);
 
-  sortArray(array, 1);
+  sortArray(array, 16);
 
   printf("The array after the sort:\n");
 
