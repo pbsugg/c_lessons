@@ -15,16 +15,16 @@ int sortArray(int array[], const int n)
   int *ptr, *ptr2;
 
   int holder;
-  int * const length = array + (n - 1);
+  int * const length = array + n;
 
-  for(ptr = array; ptr < length - 1 ; ++ptr)
+  for(ptr = array; ptr <= length - 1 ; ++ptr)
   {
-    for (ptr2 = array + 1; ptr2 < length; ++ptr2)
+    for (ptr2 = ptr + 1; ptr2 < length; ++ptr2)
     {
       if (*ptr > *ptr2)
       {
         holder = *ptr;
-        *pt r = *ptr2;
+        *ptr = *ptr2;
         *ptr2 = holder;
       }
 
